@@ -3,6 +3,7 @@
     <a href="#" class="dichatin-toggle" @click="toggleChatWindow()">Toggle Chat</a>
     <div class="dichatin-window" v-show="isChatWindowShown">
       <a href="#" class="dichatin-nav__home">Home</a>
+      <a href="#" class="dichatin-nav__chat dichatin-nav__chat--disabled">Chat</a>
       <a href="#" class="dichatin-nav__quick-help">Help</a>
     </div>
   </div>

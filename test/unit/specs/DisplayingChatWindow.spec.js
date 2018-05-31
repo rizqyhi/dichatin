@@ -40,4 +40,14 @@ describe('Displaying chat window', () => {
       expect(wrapper.find('.dichatin-nav__quick-help').isVisible()).to.be.true()
     })
   })
+
+  context('When user was not authenticated', () => {
+    it('should see non-login chat button rendered', () => {
+      const wrapper = shallowMount(Dichatin)
+      wrapper.find('.dichatin-toggle').trigger('click')
+
+      expect(wrapper.find('.dichatin-nav__chat').classes()).to.contain('dichatin-nav__chat--disabled')
+      expect(wrapper.find('.dichatin-nav__chat').classes()).to.not.contain('dichatin-nav__chat--active')
+    })
+  })
 })
