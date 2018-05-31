@@ -3,7 +3,7 @@
     <a href="#" class="dichatin-toggle" @click="toggleChatWindow()">Toggle Chat</a>
     <div class="dichatin-window" v-show="isChatWindowShown">
       <a href="#" class="dichatin-nav__home">Home</a>
-      <a href="#" class="dichatin-nav__chat dichatin-nav__chat--disabled">Chat</a>
+      <a href="#" class="dichatin-nav__chat" :class="navChatClass">Chat</a>
       <a href="#" class="dichatin-nav__quick-help">Help</a>
     </div>
   </div>
@@ -11,9 +11,25 @@
 
 <script>
 export default {
+  props: {
+    authInformationProvider: {
+      type: Object,
+      default: undefined
+    }
+  },
+
   data () {
     return {
       isChatWindowShown: false
+    }
+  },
+
+  computed: {
+    navChatClass () {
+      return {
+        'dichatin-nav__chat--disabled': !this.authInformationProvider.isUserLoggedIn(),
+        'dichatin-nav__chat--active': this.authInformationProvider.isUserLoggedIn()
+      }
     }
   },
 
