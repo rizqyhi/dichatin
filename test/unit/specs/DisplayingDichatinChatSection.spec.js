@@ -37,7 +37,11 @@ describe('Displaying Dichatin chat section', () => {
       expect(wrapper.find('.dichatin-section__chat').isVisible()).to.be.true()
     })
 
-    it('should not see home section')
+    it('should not see home section', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.false()
+    })
   })
 
   context('When user was not authenticated', () => {

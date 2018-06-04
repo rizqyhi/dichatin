@@ -2,7 +2,7 @@
   <div class="dichatin">
     <a href="#" class="dichatin-toggle" @click="toggleChatWindow()">Toggle Chat</a>
     <div class="dichatin-window" v-show="isChatWindowShown">
-      <div class="dichatin-section__home">
+      <div class="dichatin-section__home" v-show="isActiveSection('home')">
         Dichatin Home
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
@@ -52,6 +52,10 @@ export default {
 
     setActiveSection (section) {
       this.activeSection = section
+    },
+
+    isActiveSection (section) {
+      return section === this.activeSection
     }
   }
 }
