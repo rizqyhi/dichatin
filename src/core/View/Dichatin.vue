@@ -24,7 +24,8 @@ export default {
 
   data () {
     return {
-      isChatWindowShown: false
+      isChatWindowShown: false,
+      activeSection: 'home'
     }
   },
 
@@ -44,6 +45,10 @@ export default {
   methods: {
     toggleChatWindow () {
       this.isChatWindowShown = !this.isChatWindowShown
+    },
+
+    setActiveSection (section) {
+      this.activeSection = section
     }
   }
 }

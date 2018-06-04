@@ -24,7 +24,13 @@ describe('Displaying Dichatin chat section', () => {
 
       expect(spy.calledWith('chat')).to.be.true()
     })
-    it('should change active section state')
+
+    it('should change active section state', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.vm.activeSection).to.equal('chat')
+    })
+
     it('should see chat section')
     it('should not see home section')
   })
