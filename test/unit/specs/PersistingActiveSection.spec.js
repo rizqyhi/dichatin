@@ -34,7 +34,15 @@ describe('Persisting active section between pages', () => {
     })
   })
 
-  context('When user navigated to other page and chat button was clicked', () => {
-    it('should see chat section')
+  context('When user navigated to other page and dichatin toggle was clicked', () => {
+    context('When persisted data was not available', () => {
+      it('should see current state of active section was home')
+      it('should see home section')
+    })
+
+    context('When persisted data was available', () => {
+      it('should see current state of active section was chat')
+      it('should see chat section')
+    })
   })
 })
