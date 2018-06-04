@@ -1,5 +1,5 @@
 export default class AuthInformationProvider {
-  constructor(chatProvider) {
+  constructor (chatProvider) {
     this.chatProvider = chatProvider
   }
 
