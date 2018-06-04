@@ -4,7 +4,7 @@
     <div class="dichatin-window" v-show="isChatWindowShown">
       <div class="dichatin-section__home">
         Dichatin Home
-        <a href="#" class="dichatin-login-btn">Login</a>
+        <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
       <a href="#" class="dichatin-nav__home dichatin-nav--active">Home</a>
       <a href="#" class="dichatin-nav__chat" :class="navChatClass">Chat</a>
@@ -29,6 +29,10 @@ export default {
   },
 
   computed: {
+    isUserLoggedIn () {
+      return this.authInformationProvider.isUserLoggedIn()
+    },
+
     navChatClass () {
       return {
         'dichatin-nav__chat--disabled': !this.authInformationProvider.isUserLoggedIn(),

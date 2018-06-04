@@ -37,6 +37,13 @@ describe('Displaying Dichatin home section', () => {
 
   context('When user was not authenticated', () => {
     it('should see login button rendered in home section', () => {
+      const chatProvider = {
+        isLogin: () => false
+      }
+      const authInformationProvider = new AuthInformationProvider(chatProvider)
+      wrapper = shallowMount(Dichatin, {
+        propsData: { authInformationProvider }
+      })
       wrapper.find('.dichatin-toggle').trigger('click')
 
       expect(wrapper.find('.dichatin-login-btn').exists()).to.be.true()
@@ -44,6 +51,10 @@ describe('Displaying Dichatin home section', () => {
   })
 
   context('When user was authenticated', () => {
-    it('should not see login button rendered in home section')
+    it('should not see login button rendered in home section', () => {
+      wrapper.find('.dichatin-toggle').trigger('click')
+
+      expect(wrapper.find('.dichatin-login-btn').exists()).to.be.false()
+    })
   })
 })
