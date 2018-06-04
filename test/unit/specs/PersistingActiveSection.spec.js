@@ -3,6 +3,8 @@ import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 
+const persistedSectionManager = new PersistedSectionManager()
+
 describe('Persisting active section between pages', () => {
   let wrapper
 
@@ -12,7 +14,7 @@ describe('Persisting active section between pages', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider }
+      propsData: { authInformationProvider, persistedSectionManager }
     })
   })
 
@@ -26,8 +28,6 @@ describe('Persisting active section between pages', () => {
     })
 
     it('should returned correct data from persisted manager', () => {
-      const persistedSectionManager = new PersistedSectionManager()
-      wrapper.setProps({ persistedSectionManager })
       wrapper.find('.dichatin-nav__chat').trigger('click')
 
       expect(persistedSectionManager.getActiveSection()).to.equal('chat')
