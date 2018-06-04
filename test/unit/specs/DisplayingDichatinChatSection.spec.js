@@ -45,7 +45,19 @@ describe('Displaying Dichatin chat section', () => {
   })
 
   context('When user was not authenticated', () => {
-    it('should see login button rendered in chat section')
+    it('should see login button rendered in chat section', () => {
+      const chatProvider = {
+        isLogin: () => false
+      }
+      const authInformationProvider = new AuthInformationProvider(chatProvider)
+      wrapper = shallowMount(Dichatin, {
+        propsData: { authInformationProvider },
+        data: { isChatWindowShown: true }
+      })
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-login-btn').exists()).to.be.true()
+    })
   })
 
   context('When user was authenticated', () => {
