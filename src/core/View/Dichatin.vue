@@ -4,6 +4,7 @@
     <div class="dichatin-window" v-show="isChatWindowShown">
       <div class="dichatin-section__home">
         Dichatin Home
+        <a href="#" class="dichatin-login-btn">Login</a>
       </div>
       <a href="#" class="dichatin-nav__home dichatin-nav--active">Home</a>
       <a href="#" class="dichatin-nav__chat" :class="navChatClass">Chat</a>
