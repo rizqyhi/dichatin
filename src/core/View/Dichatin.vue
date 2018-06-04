@@ -9,6 +9,7 @@
       <div class="dichatin-section dichatin-section__chat" v-show="isActiveSection('chat')">
         Dichatin Chat
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
+        <div class="dichatin-chat__error">Chat provider sedang error</div>
       </div>
       <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
       <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
@@ -21,6 +22,10 @@
 export default {
   props: {
     authInformationProvider: {
+      type: Object,
+      default: undefined
+    },
+    chatProvider: {
       type: Object,
       default: undefined
     }
@@ -36,6 +41,10 @@ export default {
   computed: {
     isUserLoggedIn () {
       return this.authInformationProvider.isUserLoggedIn()
+    },
+
+    isChatProviderError () {
+      return this.chatProvider.isError()
     },
 
     navChatClass () {
