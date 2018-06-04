@@ -31,7 +31,12 @@ describe('Displaying Dichatin chat section', () => {
       expect(wrapper.vm.activeSection).to.equal('chat')
     })
 
-    it('should see chat section')
+    it('should see chat section', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-section__chat').isVisible()).to.be.true()
+    })
+
     it('should not see home section')
   })
 
