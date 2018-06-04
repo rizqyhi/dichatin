@@ -61,6 +61,10 @@ describe('Displaying Dichatin chat section', () => {
   })
 
   context('When user was authenticated', () => {
-    it('should see not login button rendered in chat section')
+    it('should see not login button rendered in chat section', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-login-btn').exists()).to.be.false()
+    })
   })
 })
