@@ -6,7 +6,7 @@
         Dichatin Home
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
-      <div class="dichatin-section dichatin-section__chat">
+      <div class="dichatin-section dichatin-section__chat" v-show="isActiveSection('chat')">
         Dichatin Chat
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
