@@ -7,7 +7,7 @@
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
       <a href="#" class="dichatin-nav__home dichatin-nav--active">Home</a>
-      <a href="#" class="dichatin-nav__chat" :class="navChatClass">Chat</a>
+      <a href="#" class="dichatin-nav__chat" :class="navChatClass" @click="setActiveSection('chat')">Chat</a>
       <a href="#" class="dichatin-nav__quick-help">Help</a>
     </div>
   </div>
