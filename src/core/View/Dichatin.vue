@@ -35,8 +35,8 @@ export default {
 
     navChatClass () {
       return {
-        'dichatin-nav__chat--disabled': !this.authInformationProvider.isUserLoggedIn(),
-        'dichatin-nav__chat--active': this.authInformationProvider.isUserLoggedIn()
+        'dichatin-nav__chat--disabled': !this.isUserLoggedIn,
+        'dichatin-nav__chat--active': this.isUserLoggedIn
       }
     }
   },
