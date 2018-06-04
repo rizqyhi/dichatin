@@ -23,6 +23,18 @@ describe('Switching Dichatin active section', () => {
       expect(wrapper.vm.activeSection).to.equal('chat')
     })
 
+    it('should see active chat button', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-nav__chat').classes()).to.contain('dichatin-nav--active')
+    })
+
+    it('should not see other buttons as active', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-nav:not(.dichatin-nav__chat)').classes()).to.not.contain('dichatin-nav--active')
+    })
+
     it('should see chat section', () => {
       wrapper.find('.dichatin-nav__chat').trigger('click')
 
@@ -42,6 +54,20 @@ describe('Switching Dichatin active section', () => {
       wrapper.find('.dichatin-nav__home').trigger('click')
 
       expect(wrapper.vm.activeSection).to.equal('home')
+    })
+
+    it('should see active chat button', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+      wrapper.find('.dichatin-nav__home').trigger('click')
+
+      expect(wrapper.find('.dichatin-nav__home').classes()).to.contain('dichatin-nav--active')
+    })
+
+    it('should not see other buttons as active', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+      wrapper.find('.dichatin-nav__home').trigger('click')
+
+      expect(wrapper.find('.dichatin-nav:not(.dichatin-nav__home)').classes()).to.not.contain('dichatin-nav--active')
     })
 
     it('should see home section', () => {

@@ -10,8 +10,8 @@
         Dichatin Chat
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
       </div>
-      <a href="#" class="dichatin-nav__home dichatin-nav--active" @click="setActiveSection('home')">Home</a>
-      <a href="#" class="dichatin-nav__chat" :class="navChatClass" @click="setActiveSection('chat')">Chat</a>
+      <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
+      <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
       <a href="#" class="dichatin-nav__quick-help">Help</a>
     </div>
   </div>
@@ -57,6 +57,12 @@ export default {
 
     isActiveSection (section) {
       return section === this.activeSection
+    },
+
+    navActiveClass (section) {
+      return {
+        'dichatin-nav--active': this.isActiveSection(section)
+      }
     }
   }
 }
