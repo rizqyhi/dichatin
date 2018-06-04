@@ -36,8 +36,32 @@ describe('Persisting active section between pages', () => {
 
   context('When user navigated to other page and dichatin toggle was clicked', () => {
     context('When persisted data was not available', () => {
-      it('should see current state of active section was home')
-      it('should see home section')
+      it('should see current state of active section was home', () => {
+        const chatProvider = {
+          isLogin: () => true
+        }
+        const authInformationProvider = new AuthInformationProvider(chatProvider)
+        const persistedSectionManager = new PersistedSectionManager()
+        wrapper = shallowMount(Dichatin, {
+          propsData: { authInformationProvider, persistedSectionManager }
+        })
+
+        expect(wrapper.vm.activeSection).to.equal('home')
+      })
+
+      it('should see home section', () => {
+        const chatProvider = {
+          isLogin: () => true
+        }
+        const authInformationProvider = new AuthInformationProvider(chatProvider)
+        const persistedSectionManager = new PersistedSectionManager()
+        wrapper = shallowMount(Dichatin, {
+          propsData: { authInformationProvider, persistedSectionManager },
+          data: { isChatWindowShown: true }
+        })
+
+        expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.true()
+      })
     })
 
     context('When persisted data was available', () => {
