@@ -28,6 +28,10 @@ export default {
     chatProvider: {
       type: Object,
       default: undefined
+    },
+    persistedSectionManager: {
+      type: Object,
+      default: undefined
     }
   },
 
@@ -62,6 +66,7 @@ export default {
 
     setActiveSection (section) {
       this.activeSection = section
+      this.persistedSectionManager.setActiveSection(section)
     },
 
     isActiveSection (section) {
