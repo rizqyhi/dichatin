@@ -44,7 +44,13 @@ describe('Switching Dichatin active section', () => {
       expect(wrapper.vm.activeSection).to.equal('home')
     })
 
-    it('should see home section')
+    it('should see home section', () => {
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+      wrapper.find('.dichatin-nav__home').trigger('click')
+
+      expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.true()
+    })
+
     it('should not see other sections')
   })
 })
