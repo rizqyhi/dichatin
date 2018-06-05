@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import Dichatin from '@/core/View/Dichatin'
+import DichatinWindow from '@/core/View/components/DichatinWindow'
 
 describe('Displaying Dichatin chat section', () => {
   let wrapper
@@ -12,9 +12,8 @@ describe('Displaying Dichatin chat section', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     const persistedSectionManager = new PersistedSectionManager()
-    wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider, persistedSectionManager },
-      data: { isChatWindowShown: true }
+    wrapper = shallowMount(DichatinWindow, {
+      propsData: { authInformationProvider, persistedSectionManager }
     })
   })
 
@@ -53,9 +52,8 @@ describe('Displaying Dichatin chat section', () => {
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
       const persistedSectionManager = new PersistedSectionManager()
-      wrapper = shallowMount(Dichatin, {
-        propsData: { authInformationProvider, persistedSectionManager },
-        data: { isChatWindowShown: true }
+      wrapper = shallowMount(DichatinWindow, {
+        propsData: { authInformationProvider, persistedSectionManager }
       })
       wrapper.find('.dichatin-nav__chat').trigger('click')
 
@@ -79,9 +77,8 @@ describe('Displaying Dichatin chat section', () => {
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
       const persistedSectionManager = new PersistedSectionManager()
-      wrapper = shallowMount(Dichatin, {
-        propsData: { authInformationProvider, chatProvider, persistedSectionManager },
-        data: { isChatWindowShown: true }
+      wrapper = shallowMount(DichatinWindow, {
+        propsData: { authInformationProvider, chatProvider, persistedSectionManager }
       })
       wrapper.find('.dichatin-nav__chat').trigger('click')
 

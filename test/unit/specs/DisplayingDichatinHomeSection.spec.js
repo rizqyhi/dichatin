@@ -3,6 +3,7 @@ import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 import DichatinToggle from '@/core/View/components/DichatinToggle'
+import DichatinWindow from '@/core/View/components/DichatinWindow'
 
 describe('Displaying Dichatin home section', () => {
   let wrapper
@@ -22,7 +23,7 @@ describe('Displaying Dichatin home section', () => {
     it('should see chat window rendered', () => {
       wrapper.find(DichatinToggle).trigger('click')
 
-      expect(wrapper.find('.dichatin-window').isVisible()).to.be.true()
+      expect(wrapper.find(DichatinWindow).isVisible()).to.be.true()
     })
 
     it('should see active home button was rendered', () => {

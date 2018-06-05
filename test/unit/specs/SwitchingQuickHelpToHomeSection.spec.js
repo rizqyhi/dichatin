@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import Dichatin from '@/core/View/Dichatin'
+import DichatinWindow from '@/core/View/components/DichatinWindow'
 
 describe('Switching Dichatin active section from quick help to home', () => {
   let wrapper
@@ -12,10 +12,9 @@ describe('Switching Dichatin active section from quick help to home', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     const persistedSectionManager = new PersistedSectionManager()
-    wrapper = shallowMount(Dichatin, {
+    wrapper = shallowMount(DichatinWindow, {
       propsData: { authInformationProvider, persistedSectionManager },
       data: {
-        isChatWindowShown: true,
         activeSection: 'quick-help'
       }
     })

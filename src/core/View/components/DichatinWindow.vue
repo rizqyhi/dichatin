@@ -1,0 +1,119 @@
+<template>
+  <div class="dichatin-window">
+    <div class="dichatin-section dichatin-section__home" v-show="isActiveSection('home')">
+      Dichatin Home
+      <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
+    </div>
+    <div class="dichatin-section dichatin-section__chat" v-show="isActiveSection('chat')">
+      Dichatin Chat
+      <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
+      <div class="dichatin-chat__error">Chat provider sedang error</div>
+    </div>
+    <div class="dichatin-section dichatin-section__quick-help" v-show="isActiveSection('quick-help')">
+      Dichatin Quick Help
+    </div>
+    <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
+    <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
+    <a href="#" class="dichatin-nav dichatin-nav__quick-help" :class="navActiveClass('quick-help')" @click="setActiveSection('quick-help')">Help</a>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    authInformationProvider: {
+      type: Object,
+      default: undefined
+    },
+    chatProvider: {
+      type: Object,
+      default: undefined
+    },
+    persistedSectionManager: {
+      type: Object,
+      default: undefined
+    }
+  },
+
+  data () {
+    return {
+      activeSection: this.persistedSectionManager.getActiveSection()
+    }
+  },
+
+  computed: {
+    isUserLoggedIn () {
+      return this.authInformationProvider.isUserLoggedIn()
+    },
+
+    isChatProviderError () {
+      return this.chatProvider.isError()
+    },
+
+    navChatClass () {
+      return {
+        'dichatin-nav__chat--disabled': !this.isUserLoggedIn,
+        'dichatin-nav__chat--active': this.isUserLoggedIn
+      }
+    }
+  },
+
+  methods: {
+    setActiveSection (section) {
+      this.activeSection = section
+      this.persistedSectionManager.setActiveSection(section)
+    },
+
+    isActiveSection (section) {
+      return section === this.activeSection
+    },
+
+    navActiveClass (section) {
+      return {
+        'dichatin-nav--active': this.isActiveSection(section)
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.dichatin-window {
+  height: 480px;
+  display: flex;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.08);
+}
+
+.dichatin-window--active {
+  opacity: 1;
+  transform: translateY(-70px)
+}
+
+.dichatin-window__content {
+  width: 400px;
+}
+
+.dichatin-window__nav {
+  width: 60px;
+  background: #f5f5f5;
+  border-radius: 0 3px 3px 0;
+}
+
+.dichatin-window__nav-item {
+  display: block;
+  padding: 10px;
+  text-align: center;
+
+  &--active {
+    background: #e8e8e8
+  }
+
+  &:first-child {
+    border-top-right-radius: 3px;
+  }
+}
+</style>
