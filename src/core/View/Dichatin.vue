@@ -11,9 +11,12 @@
         <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
         <div class="dichatin-chat__error">Chat provider sedang error</div>
       </div>
+      <div class="dichatin-section dichatin-section__quick-help" v-show="isActiveSection('quick-help')">
+        Dichatin Quick Help
+      </div>
       <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
       <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
-      <a href="#" class="dichatin-nav__quick-help">Help</a>
+      <a href="#" class="dichatin-nav dichatin-nav__quick-help" :class="navActiveClass('quick-help')" @click="setActiveSection('quick-help')">Help</a>
     </div>
   </div>
 </template>
