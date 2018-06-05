@@ -1,7 +1,8 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
+import DichatinToggle from '@/core/View/components/DichatinToggle'
 
 describe('Displaying Dichatin home section', () => {
   let wrapper
@@ -12,26 +13,26 @@ describe('Displaying Dichatin home section', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     const persistedSectionManager = new PersistedSectionManager()
-    wrapper = shallowMount(Dichatin, {
+    wrapper = mount(Dichatin, {
       propsData: { authInformationProvider, persistedSectionManager }
     })
   })
 
   context('When chat toggle was clicked', () => {
     it('should see chat window rendered', () => {
-      wrapper.find('.dichatin-toggle').trigger('click')
+      wrapper.find(DichatinToggle).trigger('click')
 
       expect(wrapper.find('.dichatin-window').isVisible()).to.be.true()
     })
 
     it('should see active home button was rendered', () => {
-      wrapper.find('.dichatin-toggle').trigger('click')
+      wrapper.find(DichatinToggle).trigger('click')
 
       expect(wrapper.find('.dichatin-nav__home').classes()).to.contain('dichatin-nav--active')
     })
 
     it('should see home section was rendered', () => {
-      wrapper.find('.dichatin-toggle').trigger('click')
+      wrapper.find(DichatinToggle).trigger('click')
 
       expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.true()
     })
@@ -44,10 +45,10 @@ describe('Displaying Dichatin home section', () => {
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
       const persistedSectionManager = new PersistedSectionManager()
-      wrapper = shallowMount(Dichatin, {
+      wrapper = mount(Dichatin, {
         propsData: { authInformationProvider, persistedSectionManager }
       })
-      wrapper.find('.dichatin-toggle').trigger('click')
+      wrapper.find(DichatinToggle).trigger('click')
 
       expect(wrapper.find('.dichatin-login-btn').exists()).to.be.true()
     })
@@ -55,7 +56,7 @@ describe('Displaying Dichatin home section', () => {
 
   context('When user was authenticated', () => {
     it('should not see login button rendered in home section', () => {
-      wrapper.find('.dichatin-toggle').trigger('click')
+      wrapper.find(DichatinToggle).trigger('click')
 
       expect(wrapper.find('.dichatin-login-btn').exists()).to.be.false()
     })

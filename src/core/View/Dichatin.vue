@@ -1,6 +1,6 @@
 <template>
   <div class="dichatin">
-    <a href="#" class="dichatin-toggle" @click="toggleChatWindow()">Toggle Chat</a>
+    <dichatin-toggle @click="toggleChatWindow()" :active="isChatWindowShown">Toggle Chat</dichatin-toggle>
     <div class="dichatin-window" v-show="isChatWindowShown">
       <div class="dichatin-section dichatin-section__home" v-show="isActiveSection('home')">
         Dichatin Home
@@ -22,7 +22,11 @@
 </template>
 
 <script>
+import DichatinToggle from './components/DichatinToggle'
+
 export default {
+  components: { DichatinToggle },
+
   props: {
     authInformationProvider: {
       type: Object,
