@@ -14,7 +14,8 @@ describe('Persisting active section between pages', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider, persistedSectionManager }
+      propsData: { authInformationProvider, persistedSectionManager },
+      data: { isChatWindowShown: true }
     })
   })
 
@@ -65,8 +66,13 @@ describe('Persisting active section between pages', () => {
     })
 
     context('When persisted data was available', () => {
-      it('should see current state of active section was chat')
-      it('should see chat section')
+      it('should see current state of active section was chat', () => {
+        expect(persistedSectionManager.getActiveSection()).to.equal('chat')
+      })
+
+      it('should see chat section', () => {
+        expect(wrapper.find('.dichatin-section__chat').isVisible()).to.be.true()
+      })
     })
   })
 })

@@ -38,7 +38,7 @@ export default {
   data () {
     return {
       isChatWindowShown: false,
-      activeSection: 'home'
+      activeSection: this.persistedSectionManager.getActiveSection()
     }
   },
 
