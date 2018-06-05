@@ -1,9 +1,6 @@
 <template>
   <div class="dichatin-window">
-    <div class="dichatin-section dichatin-section__home" v-show="isActiveSection('home')">
-      Dichatin Home
-      <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
-    </div>
+    <dichatin-section-home v-show="isActiveSection('home')" v-bind="{ isUserLoggedIn }"></dichatin-section-home>
     <div class="dichatin-section dichatin-section__chat" v-show="isActiveSection('chat')">
       Dichatin Chat
       <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
@@ -19,7 +16,11 @@
 </template>
 
 <script>
+import DichatinSectionHome from './DichatinSectionHome'
+
 export default {
+  components: { DichatinSectionHome },
+
   props: {
     authInformationProvider: {
       type: Object,

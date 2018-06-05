@@ -4,6 +4,7 @@ import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 import DichatinToggle from '@/core/View/components/DichatinToggle'
 import DichatinWindow from '@/core/View/components/DichatinWindow'
+import DichatinSectionHome from '@/core/View/components/DichatinSectionHome'
 
 describe('Displaying Dichatin home section', () => {
   let wrapper
@@ -35,7 +36,7 @@ describe('Displaying Dichatin home section', () => {
     it('should see home section was rendered', () => {
       wrapper.find(DichatinToggle).trigger('click')
 
-      expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.true()
+      expect(wrapper.find(DichatinSectionHome).isVisible()).to.be.true()
     })
   })
 

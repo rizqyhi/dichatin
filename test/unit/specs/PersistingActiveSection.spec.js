@@ -1,7 +1,8 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import Dichatin from '@/core/View/Dichatin'
+import DichatinWindow from '@/core/View/components/DichatinWindow'
+import DichatinSectionHome from '@/core/View/components/DichatinSectionHome'
 
 const persistedSectionManager = new PersistedSectionManager()
 
@@ -13,7 +14,7 @@ describe('Persisting active section between pages', () => {
       isLogin: () => true
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
-    wrapper = shallowMount(Dichatin, {
+    wrapper = mount(DichatinWindow, {
       propsData: { authInformationProvider, persistedSectionManager },
       data: { isChatWindowShown: true }
     })
@@ -43,7 +44,7 @@ describe('Persisting active section between pages', () => {
         }
         const authInformationProvider = new AuthInformationProvider(chatProvider)
         const persistedSectionManager = new PersistedSectionManager()
-        wrapper = shallowMount(Dichatin, {
+        wrapper = mount(DichatinWindow, {
           propsData: { authInformationProvider, persistedSectionManager }
         })
 
@@ -56,12 +57,12 @@ describe('Persisting active section between pages', () => {
         }
         const authInformationProvider = new AuthInformationProvider(chatProvider)
         const persistedSectionManager = new PersistedSectionManager()
-        wrapper = shallowMount(Dichatin, {
+        wrapper = mount(DichatinWindow, {
           propsData: { authInformationProvider, persistedSectionManager },
           data: { isChatWindowShown: true }
         })
 
-        expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.true()
+        expect(wrapper.find(DichatinSectionHome).isVisible()).to.be.true()
       })
     })
 

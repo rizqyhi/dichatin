@@ -1,7 +1,8 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
 import DichatinWindow from '@/core/View/components/DichatinWindow'
+import DichatinSectionHome from '@/core/View/components/DichatinSectionHome'
 
 describe('Displaying Dichatin chat section', () => {
   let wrapper
@@ -12,7 +13,7 @@ describe('Displaying Dichatin chat section', () => {
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
     const persistedSectionManager = new PersistedSectionManager()
-    wrapper = shallowMount(DichatinWindow, {
+    wrapper = mount(DichatinWindow, {
       propsData: { authInformationProvider, persistedSectionManager }
     })
   })
@@ -41,7 +42,7 @@ describe('Displaying Dichatin chat section', () => {
     it('should not see home section', () => {
       wrapper.find('.dichatin-nav__chat').trigger('click')
 
-      expect(wrapper.find('.dichatin-section__home').isVisible()).to.be.false()
+      expect(wrapper.find(DichatinSectionHome).isVisible()).to.be.false()
     })
   })
 
