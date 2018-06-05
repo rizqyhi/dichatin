@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
+import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 
 describe('Displaying Dichatin chat section', () => {
@@ -10,8 +11,9 @@ describe('Displaying Dichatin chat section', () => {
       isLogin: () => true
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
+    const persistedSectionManager = new PersistedSectionManager()
     wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider },
+      propsData: { authInformationProvider, persistedSectionManager },
       data: { isChatWindowShown: true }
     })
   })
@@ -50,8 +52,9 @@ describe('Displaying Dichatin chat section', () => {
         isLogin: () => false
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
+      const persistedSectionManager = new PersistedSectionManager()
       wrapper = shallowMount(Dichatin, {
-        propsData: { authInformationProvider },
+        propsData: { authInformationProvider, persistedSectionManager },
         data: { isChatWindowShown: true }
       })
       wrapper.find('.dichatin-nav__chat').trigger('click')
@@ -75,8 +78,9 @@ describe('Displaying Dichatin chat section', () => {
         isError: () => true
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
+      const persistedSectionManager = new PersistedSectionManager()
       wrapper = shallowMount(Dichatin, {
-        propsData: { authInformationProvider, chatProvider },
+        propsData: { authInformationProvider, chatProvider, persistedSectionManager },
         data: { isChatWindowShown: true }
       })
       wrapper.find('.dichatin-nav__chat').trigger('click')

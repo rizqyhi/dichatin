@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
+import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 
 describe('Displaying chat window', () => {
@@ -10,8 +11,9 @@ describe('Displaying chat window', () => {
       isLogin: () => true
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
+    const persistedSectionManager = new PersistedSectionManager()
     wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider }
+      propsData: { authInformationProvider, persistedSectionManager }
     })
   })
 
@@ -55,8 +57,9 @@ describe('Displaying chat window', () => {
         isLogin: () => false
       }
       const authInformationProvider = new AuthInformationProvider(chatProvider)
+      const persistedSectionManager = new PersistedSectionManager()
       wrapper = shallowMount(Dichatin, {
-        propsData: { authInformationProvider }
+        propsData: { authInformationProvider, persistedSectionManager }
       })
       wrapper.find('.dichatin-toggle').trigger('click')
 

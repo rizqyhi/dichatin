@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
+import PersistedSectionManager from '@/core/PersistedSectionManager'
 import Dichatin from '@/core/View/Dichatin'
 
 describe('Switching Dichatin active section from home to chat', () => {
@@ -10,8 +11,9 @@ describe('Switching Dichatin active section from home to chat', () => {
       isLogin: () => true
     }
     const authInformationProvider = new AuthInformationProvider(chatProvider)
+    const persistedSectionManager = new PersistedSectionManager()
     wrapper = shallowMount(Dichatin, {
-      propsData: { authInformationProvider },
+      propsData: { authInformationProvider, persistedSectionManager },
       data: { isChatWindowShown: true }
     })
   })
