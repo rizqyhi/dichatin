@@ -1,11 +1,7 @@
 <template>
   <div class="dichatin-window">
     <dichatin-section-home v-show="isActiveSection('home')" v-bind="{ isUserLoggedIn }"></dichatin-section-home>
-    <div class="dichatin-section dichatin-section__chat" v-show="isActiveSection('chat')">
-      Dichatin Chat
-      <a href="#" class="dichatin-login-btn" v-if="!isUserLoggedIn">Login</a>
-      <div class="dichatin-chat__error">Chat provider sedang error</div>
-    </div>
+    <dichatin-section-chat v-show="isActiveSection('chat')" v-bind="{ isUserLoggedIn, chatProvider }"></dichatin-section-chat>
     <div class="dichatin-section dichatin-section__quick-help" v-show="isActiveSection('quick-help')">
       Dichatin Quick Help
     </div>
@@ -17,9 +13,10 @@
 
 <script>
 import DichatinSectionHome from './DichatinSectionHome'
+import DichatinSectionChat from './DichatinSectionChat'
 
 export default {
-  components: { DichatinSectionHome },
+  components: { DichatinSectionHome, DichatinSectionChat },
 
   props: {
     authInformationProvider: {
@@ -45,10 +42,6 @@ export default {
   computed: {
     isUserLoggedIn () {
       return this.authInformationProvider.isUserLoggedIn()
-    },
-
-    isChatProviderError () {
-      return this.chatProvider.isError()
     },
 
     navChatClass () {
