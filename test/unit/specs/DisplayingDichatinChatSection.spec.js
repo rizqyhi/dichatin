@@ -86,4 +86,21 @@ describe('Displaying Dichatin chat section', () => {
       expect(wrapper.find('.dichatin-chat__error').exists()).to.be.true()
     })
   })
+
+  context('When chat provider was not throwing unexpected error', () => {
+    it('should notn shown error notice', () => {
+      const chatProvider = {
+        isLogin: () => true,
+        isError: () => false
+      }
+      const authInformationProvider = new AuthInformationProvider(chatProvider)
+      const persistedSectionManager = new PersistedSectionManager()
+      wrapper = mount(DichatinWindow, {
+        propsData: { authInformationProvider, chatProvider, persistedSectionManager }
+      })
+      wrapper.find('.dichatin-nav__chat').trigger('click')
+
+      expect(wrapper.find('.dichatin-chat__error').exists()).to.be.false()
+    })
+  })
 })
