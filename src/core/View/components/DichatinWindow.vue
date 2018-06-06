@@ -2,9 +2,7 @@
   <div class="dichatin-window">
     <dichatin-section-home v-show="isActiveSection('home')" v-bind="{ isUserLoggedIn }"></dichatin-section-home>
     <dichatin-section-chat v-show="isActiveSection('chat')" v-bind="{ isUserLoggedIn, chatProvider }"></dichatin-section-chat>
-    <div class="dichatin-section dichatin-section__quick-help" v-show="isActiveSection('quick-help')">
-      Dichatin Quick Help
-    </div>
+    <dichatin-section-quick-help v-show="isActiveSection('quick-help')"></dichatin-section-quick-help>
     <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
     <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
     <a href="#" class="dichatin-nav dichatin-nav__quick-help" :class="navActiveClass('quick-help')" @click="setActiveSection('quick-help')">Help</a>
@@ -14,9 +12,10 @@
 <script>
 import DichatinSectionHome from './DichatinSectionHome'
 import DichatinSectionChat from './DichatinSectionChat'
+import DichatinSectionQuickHelp from './DichatinSectionQuickHelp'
 
 export default {
-  components: { DichatinSectionHome, DichatinSectionChat },
+  components: { DichatinSectionHome, DichatinSectionChat, DichatinSectionQuickHelp },
 
   props: {
     authInformationProvider: {
