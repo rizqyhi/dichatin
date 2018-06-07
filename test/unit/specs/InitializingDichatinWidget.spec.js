@@ -1,6 +1,5 @@
 describe('Initializing Dichatin widget', () => {
   context('When Dichatin was called to be rendered', () => {
-    it('should called render function')
     it('should returned Vue instance')
     it('should be initialized with required props')
   })
