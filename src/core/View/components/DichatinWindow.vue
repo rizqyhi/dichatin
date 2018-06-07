@@ -1,11 +1,15 @@
 <template>
   <div class="dichatin-window">
-    <dichatin-section-home v-show="isActiveSection('home')" v-bind="{ isUserLoggedIn }"></dichatin-section-home>
-    <dichatin-section-chat v-show="isActiveSection('chat')" v-bind="{ isUserLoggedIn, chatProvider }"></dichatin-section-chat>
-    <dichatin-section-quick-help v-show="isActiveSection('quick-help')"></dichatin-section-quick-help>
-    <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
-    <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
-    <a href="#" class="dichatin-nav dichatin-nav__quick-help" :class="navActiveClass('quick-help')" @click="setActiveSection('quick-help')">Help</a>
+    <div class="dichatin-window__content">
+      <dichatin-section-home v-show="isActiveSection('home')" v-bind="{ isUserLoggedIn }"></dichatin-section-home>
+      <dichatin-section-chat v-show="isActiveSection('chat')" v-bind="{ isUserLoggedIn, chatProvider }"></dichatin-section-chat>
+      <dichatin-section-quick-help v-show="isActiveSection('quick-help')"></dichatin-section-quick-help>
+    </div>
+    <div class="dichatin-window__nav">
+      <a href="#" class="dichatin-nav dichatin-nav__home" :class="navActiveClass('home')" @click="setActiveSection('home')">Home</a>
+      <a href="#" class="dichatin-nav dichatin-nav__chat" :class="Object.assign({}, navChatClass, navActiveClass('chat'))" @click="setActiveSection('chat')">Chat</a>
+      <a href="#" class="dichatin-nav dichatin-nav__quick-help" :class="navActiveClass('quick-help')" @click="setActiveSection('quick-help')">Help</a>
+    </div>
   </div>
 </template>
 
