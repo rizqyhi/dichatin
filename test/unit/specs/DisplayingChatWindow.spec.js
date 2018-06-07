@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import Dichatin from '@/core/View/Dichatin'
-import DichatinToggle from '@/core/View/components/DichatinToggle'
+import Dichatin from '@/core/DichatinWidget/Dichatin'
+import DichatinToggle from '@/core/DichatinWidget/components/DichatinToggle'
 
 describe('Displaying chat window', () => {
   let wrapper

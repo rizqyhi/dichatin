@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import Dichatin from '@/core/View/Dichatin'
-import DichatinToggle from '@/core/View/components/DichatinToggle'
-import DichatinWindow from '@/core/View/components/DichatinWindow'
-import DichatinSectionHome from '@/core/View/components/DichatinSectionHome'
+import Dichatin from '@/core/DichatinWidget/Dichatin'
+import DichatinToggle from '@/core/DichatinWidget/components/DichatinToggle'
+import DichatinWindow from '@/core/DichatinWidget/components/DichatinWindow'
+import DichatinSectionHome from '@/core/DichatinWidget/components/DichatinSectionHome'
 
 describe('Displaying Dichatin home section', () => {
   let wrapper

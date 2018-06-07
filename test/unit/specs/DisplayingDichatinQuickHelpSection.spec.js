@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 import AuthInformationProvider from '@/core/AuthInformationProvider'
 import PersistedSectionManager from '@/core/PersistedSectionManager'
-import DichatinWindow from '@/core/View/components/DichatinWindow'
-import DichatinSectionHome from '@/core/View/components/DichatinSectionHome'
+import DichatinWindow from '@/core/DichatinWidget/components/DichatinWindow'
+import DichatinSectionHome from '@/core/DichatinWidget/components/DichatinSectionHome'
 
 describe('Displaying Dichatin quick help section', () => {
   let wrapper
