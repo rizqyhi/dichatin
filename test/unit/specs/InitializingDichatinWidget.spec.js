@@ -8,6 +8,9 @@ describe('Initializing Dichatin widget', () => {
 
       expect(widget).to.be.an.instanceOf(Vue)
     })
+
+    it('should rendered Dichatin component')
+
     it('should be initialized with required props')
   })
 
